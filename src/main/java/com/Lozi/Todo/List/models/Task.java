@@ -27,7 +27,7 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
-    private User User;
+    private User user;
 
     @Column(name = "descripition", length = 255, nullable = false)
     @NotNull
@@ -35,14 +35,6 @@ public class Task {
     @Size(min = 1, max = 255)
     private String descripition;
 
-    public Task() {
-    }
-
-    public Task(Long id, User User, String descripition) {
-        this.id = id;
-        this.User = User;
-        this.descripition = descripition;
-    }
 
     public Long getId() {
         return this.id;
@@ -53,11 +45,11 @@ public class Task {
     }
 
     public User getUser() {
-        return this.User;
+        return this.user;
     }
 
-    public void setUser(User User) {
-        this.User = User;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescripition() {
@@ -67,21 +59,7 @@ public class Task {
     public void setDescripition(String descripition) {
         this.descripition = descripition;
     }
-
-    public Task id(Long id) {
-        setId(id);
-        return this;
-    }
-
-    public Task User(User User) {
-        setUser(User);
-        return this;
-    }
-
-    public Task descripition(String descripition) {
-        setDescripition(descripition);
-        return this;
-    }
+    
 
     @Override
     public boolean equals(Object obj) {
@@ -92,10 +70,10 @@ public class Task {
             return false;
         }
         Task other = (Task) obj;
-        return Objects.equals(this.id, other.id) && Objects.equals(this.User, other.User) &&
+        return Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user) &&
                 Objects.equals(this.descripition, other.descripition);
 
-    }
+    } 
 
     @Override
     public int hashCode() {
@@ -104,5 +82,5 @@ public class Task {
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         return result;
     }
-
 }
+
