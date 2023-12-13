@@ -29,12 +29,11 @@ public class Task {
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private User user;
 
-    @Column(name = "descripition", length = 255, nullable = false)
+    @Column(name = "description", length = 255, nullable = false)
     @NotNull
     @NotEmpty
     @Size(min = 1, max = 255)
-    private String descripition;
-
+    private String description;
 
     public Long getId() {
         return this.id;
@@ -52,14 +51,13 @@ public class Task {
         this.user = user;
     }
 
-    public String getDescripition() {
-        return this.descripition;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setDescripition(String descripition) {
-        this.descripition = descripition;
+    public void setDescription(String description) {
+        this.description = description;
     }
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -71,9 +69,9 @@ public class Task {
         }
         Task other = (Task) obj;
         return Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user) &&
-                Objects.equals(this.descripition, other.descripition);
+                Objects.equals(this.description, other.description);
 
-    } 
+    }
 
     @Override
     public int hashCode() {
@@ -83,4 +81,3 @@ public class Task {
         return result;
     }
 }
-

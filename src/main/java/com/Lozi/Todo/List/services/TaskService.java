@@ -1,5 +1,6 @@
 package com.Lozi.Todo.List.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class TaskService {
 
     }
 
+    public List<Task> findAllByUserId(Long userId) {
+        List<Task> tasks = this.taskRepository.findByUser_Id(userId);
+        return tasks;
+    }
+
     @Transactional
     public Task create(Task obj) {
         User user = this.userService.findById(obj.getUser().getId());
@@ -38,7 +44,7 @@ public class TaskService {
     @Transactional
     public Task update(Task obj) {
         Task newObj = findById(obj.getId());
-        newObj.setDescripition(obj.getDescripition());
+        newObj.setDescription(obj.getDescription());
         return this.taskRepository.save(newObj);
     }
 
